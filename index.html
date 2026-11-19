@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="theme-color" content="#103e32">
+<title>SuperBuy spreadsheet | Product Finds, Prices & Buying Checklist</title>
+<meta name="description" content="Explore a SuperBuy spreadsheet guide with real CAFANS product references, searchable categories, estimated USD prices, sizing checks and a shopping budget planner.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SuperBuy spreadsheet — Find, Compare, Plan">
+<meta property="og:description" content="Browse real CAFANS catalog references and compare product options with practical sizing, QC and budget checklists.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<style>
+:root{--bg:#f4f5ef;--paper:#fff;--ink:#172d25;--muted:#59695f;--green:#103e32;--lime:#d9ef9a;--line:#dce3d8;--radius:18px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.65}
+a{color:inherit}
+button,input,select{font:inherit}
+button,a,input,select{touch-action:manipulation}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #80a83d;outline-offset:4px}
+.wrap{width:min(1160px,92%);margin:auto}
+.skip{position:absolute;left:12px;top:-100px;background:white;padding:10px;z-index:5}
+.skip:focus{top:10px}
+header{background:var(--bg);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 0}
+.brand{font-weight:900;letter-spacing:-1px;font-size:23px;text-decoration:none}
+.brand span{font-size:12px;letter-spacing:2px;display:block;font-weight:500}
+nav{display:flex;gap:22px;font-size:14px;flex-wrap:wrap}
+nav a{text-decoration:none}
+.hero{padding:75px 0 52px;text-align:center}
+.eyebrow{text-transform:uppercase;font-size:12px;font-weight:bold;letter-spacing:2px;color:var(--muted)}
+h1{font-size:clamp(42px,7vw,82px);letter-spacing:-4px;line-height:1.05;margin:20px 0}
+h1 span{color:#4b7557}
+.lead{font-size:18px;max-width:710px;margin:24px auto;color:var(--muted)}
+.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:28px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:9px;background:var(--green);color:white;padding:13px 23px;text-decoration:none;font-weight:bold;border:1px solid var(--green);cursor:pointer}
+.btn.secondary{background:transparent;color:var(--green)}
+.disclosure{font-size:13px;color:var(--muted);max-width:740px;margin:auto}
+.ribbon{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:var(--radius);background:#fff;margin:0 0 55px}
+.ribbon div{padding:22px 26px}
+.ribbon div+div{border-left:1px solid var(--line)}
+.ribbon strong{display:block}
+.ribbon span{font-size:14px;color:var(--muted)}
+section{padding:20px 0 45px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:24px}
+h2{font-size:clamp(27px,4vw,39px);letter-spacing:-1.2px;line-height:1.2;margin:9px 0 15px}
+h3{line-height:1.35}
+.small{font-size:13px;color:var(--muted)}
+.section-head p{max-width:590px;margin:0;color:var(--muted)}
+.source-tag{white-space:nowrap;background:#e4ecdc;border-radius:30px;padding:7px 13px;font-size:12px}
+.tools{display:grid;grid-template-columns:1fr 190px 190px;gap:12px;margin-bottom:16px}
+label{font-size:13px;font-weight:bold;display:block}
+input,select{width:100%;background:white;border:1px solid #b9c8ba;border-radius:8px;padding:12px;color:var(--ink);margin-top:5px}
+.catalog{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{overflow:hidden;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper)}
+.card[hidden]{display:none}
+.photo{display:block;background:#e9ece5;aspect-ratio:1;overflow:hidden}
+.photo img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .25s}
+.photo:hover img{transform:scale(1.035)}
+.card-body{padding:20px}
+.category{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted)}
+.card h3{font-size:18px;margin:9px 0;min-height:49px}
+.price{font-weight:bold;font-size:22px}
+.price small{font-size:11px;color:var(--muted)}
+.card p{font-size:13px;color:var(--muted)}
+.card-link{font-size:13px;font-weight:bold;text-underline-offset:4px}
+.result{font-size:13px;color:var(--muted);margin:10px 0 20px}
+.empty{background:white;padding:24px;border-radius:12px}
+.guide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.guide{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+.number{display:inline-grid;place-items:center;width:35px;height:35px;background:var(--lime);border-radius:50%;font-size:13px;font-weight:bold}
+.guide p,.guide li{color:var(--muted);font-size:14px}
+.guide ul{padding-left:18px}
+.budget{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;padding:35px;border-radius:22px;background:var(--green);color:white}
+.budget p{color:#d6e3da}
+.budget-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.budget input{background:#fff;color:var(--ink)}
+.total{display:block;font-size:38px;line-height:1.3;margin-top:20px;font-weight:bold;color:var(--lime)}
+.budget .small{color:#d6e3da}
+.table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+table{width:100%;border-collapse:collapse;background:white;min-width:610px}
+th,td{text-align:left;padding:16px;border-bottom:1px solid var(--line);font-size:14px;vertical-align:top}
+th{background:#e8eedf}
+tr:last-child td{border-bottom:0}
+details{border-bottom:1px solid var(--line);padding:20px 0}
+summary{cursor:pointer;font-weight:bold;font-size:17px}
+details p{color:var(--muted);max-width:850px}
+.end{background:#e5ecd9;text-align:center;padding:45px 25px;border-radius:22px;margin:30px 0 60px}
+footer{border-top:1px solid var(--line);padding:25px 0 35px;color:var(--muted);font-size:12px}
+footer p{max-width:950px}
+@media(max-width:800px){.catalog{grid-template-columns:repeat(2,1fr)}.guide-grid{grid-template-columns:1fr}.budget{grid-template-columns:1fr}.tools{grid-template-columns:1fr 1fr}.tools label:first-child{grid-column:1/-1}.section-head{display:block}.source-tag{display:inline-block;margin-top:15px}.nav{align-items:start}nav{gap:12px}.ribbon div{padding:16px}}
+@media(max-width:520px){.nav{display:block}nav{margin-top:15px;font-size:13px}.hero{padding-top:45px}h1{letter-spacing:-2px}.lead{font-size:16px}.ribbon{grid-template-columns:1fr}.ribbon div+div{border-left:0;border-top:1px solid var(--line)}.catalog{gap:12px}.card-body{padding:13px}.card h3{font-size:15px;min-height:61px}.price{font-size:19px}.budget{padding:23px}.budget-fields{grid-template-columns:1fr}.tools{grid-template-columns:1fr}.tools label:first-child{grid-column:auto}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.photo img{transition:none}}
+</style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebPage",
+  "name":"SuperBuy spreadsheet — Product Finds and Buying Checklist",
+  "description":"Independent product-discovery guide with a CAFANS catalog snapshot, comparison advice and a shopping budget planner.",
+  "inLanguage":"en",
+  "mainEntity":{
+    "@type":"ItemList",
+    "name":"Selected CAFANS catalog references",
+    "numberOfItems":6,
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Leather Slides","url":"https://cafans.com/goods-158791.html"},
+      {"@type":"ListItem","position":2,"name":"Platform Slides","url":"https://cafans.com/goods-158790.html"},
+      {"@type":"ListItem","position":3,"name":"Heels","url":"https://cafans.com/goods-158789.html"},
+      {"@type":"ListItem","position":4,"name":"Sweatshirt","url":"https://cafans.com/goods-158792.html"},
+      {"@type":"ListItem","position":5,"name":"Corteiz Hoodie","url":"https://cafans.com/goods-158278.html"},
+      {"@type":"ListItem","position":6,"name":"Unisex Embroidered Oversized T-Shirt","url":"https://cafans.com/goods-158200.html"}
+    ]
+  }
+}
+</script>
+<!--
+File: index.html
+Research reviewed: https://superbuyspreadsheet.org/ and https://superbuyfind.org/spreadsheet/
+Implemented: static crawlable catalog, explicit source/date, usable filters, original comparison
+checklists, transparent destination links, budget planner and responsive accessible markup.
+Search results vary by location and personalization; exact Google first-page positions were not verified.
+Catalog source: https://cafans.com/ ; snapshot checked 2026-11-19.
+Deployment: add a self-referencing canonical and og:url using the actual public page URL.
+Indexing has NOT been submitted: no deployment URL or verified webmaster access was supplied.
+After deployment, verify the property in Google Search Console and Bing Webmaster Tools,
+publish a sitemap containing the final URL, submit that sitemap, and request URL inspection.
+HTML alone cannot submit a verified indexing request or guarantee indexing.
+-->
+<link rel="canonical" href="https://kakobuyfinds.github.io/qtlnx/">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header>
+<div class="wrap nav">
+<a class="brand" href="https://cafans.com">THE FIND INDEX<span>INDEPENDENT PRODUCT DISCOVERY</span></a>
+<nav aria-label="Main navigation">
+<a href="#catalog">Product directory</a>
+<a href="#how-to">Buying guide</a>
+<a href="#budget">Budget planner</a>
+<a href="#faq">FAQ</a>
+</nav>
+</div>
+</header>
+
+<main id="main" class="wrap">
+<section class="hero">
+<div class="eyebrow">Discover thoughtfully. Compare the details.</div>
+<h1>SuperBuy spreadsheet<span><br>A clearer way to find.</span></h1>
+<p class="lead">Explore real CAFANS product references, narrow your shortlist, and check sizing, product details and total costs before placing an order.</p>
+<div class="actions">
+<a class="btn" href="https://cafans.com">SuperBuy spreadsheet <span aria-hidden="true">&nbsp;↗</span></a>
+<a class="btn secondary" href="https://cafans.com">Buy it now <span aria-hidden="true">&nbsp;↗</span></a>
+</div>
+<p class="disclosure">Independent shopping research page. Not affiliated with or endorsed by SuperBuy. Both buttons open CAFANS; this page does not accept orders or payments.</p>
+</section>
+
+<div class="ribbon">
+<div><strong>Real catalog references</strong><span>Six selected listings imported from CAFANS.</span></div>
+<div><strong>Clear price context</strong><span>Source estimates in USD; extra costs are separate.</span></div>
+<div><strong>A practical buying workflow</strong><span>Compare options, review details, then plan your parcel.</span></div>
+</div>
+
+<section aria-labelledby="definition">
+<div class="eyebrow">Start with the essentials</div>
+<h2 id="definition">What is a SuperBuy spreadsheet?</h2>
+<p>A SuperBuy spreadsheet is a product-discovery list used to organize shopping links, photos, prices and buying notes. Its value comes from helping you compare exact product options. A saved listing is a starting point: confirm the seller, selected variation, measurements and current terms before paying.</p>
+<p>This page pairs that research workflow with a small, searchable CAFANS catalog snapshot. Open an individual product reference to review its current listing. If you intend to order using SuperBuy, obtain the original marketplace link and check whether the item can be purchased through your account. A CAFANS reference does not establish agent compatibility, availability or authenticity.</p>
+</section>
+
+<section id="catalog" aria-labelledby="catalog-title">
+<div class="section-head">
+<div>
+<div class="eyebrow">The product edit</div>
+<h2 id="catalog-title">Browse the product directory</h2>
+<p>Actual product names, images and displayed price estimates from CAFANS. Search and filters apply to these six references.</p>
+</div>
+<span class="source-tag">Snapshot checked · 19 Nov 2026</span>
+</div>
+
+<div class="tools">
+<label>Search products
+<input id="search" type="search" placeholder="Try slides, hoodie or T-shirt" autocomplete="off">
+</label>
+<label>Category
+<select id="category">
+<option value="all">All categories</option>
+<option value="Shoes">Shoes</option>
+<option value="Hoodies & Sweaters">Hoodies &amp; Sweaters</option>
+<option value="T-Shirts">T-Shirts</option>
+</select>
+</label>
+<label>Sort products
+<select id="sort">
+<option value="original">Source order</option>
+<option value="low">Price: low to high</option>
+<option value="high">Price: high to low</option>
+<option value="name">Name: A to Z</option>
+</select>
+</label>
+</div>
+<p class="result" id="result" role="status" aria-live="polite">Showing 6 product references.</p>
+
+<div class="catalog" id="products">
+<article class="card" data-category="Shoes" data-price="62.36">
+<a class="photo" href="https://cafans.com/goods-158791.html" aria-label="View Leather Slides on CAFANS">
+<img src="https://si.geilicdn.com/open1769158365-252808396-70340000019822fe6f2d0a23b491_1200_1200.jpg" alt="Leather Slides — CAFANS catalog image" width="480" height="480" loading="lazy" decoding="async">
+</a>
+<div class="card-body">
+<span class="category">Shoes</span><h3>Leather Slides</h3>
+<div class="price">$62.36 <small>USD estimate</small></div>
+<p>Check the listed material, footbed length and selected size.</p>
+<a class="card-link" href="https://cafans.com/goods-158791.html">View CAFANS listing ↗</a>
+</div>
+</article>
+
+<article class="card" data-category="Shoes" data-price="46.67">
+<a class="photo" href="https://cafans.com/goods-158790.html" aria-label="View Platform Slides on CAFANS">
+<img src="https://si.geilicdn.com/open1769158365-252808396-1400000001985b1f67440a8133b0_750_750.jpg" alt="Platform Slides — CAFANS catalog image" width="480" height="480" loading="lazy" decoding="async">
+</a>
+<div class="card-body">
+<span class="category">Shoes</span><h3>Platform Slides</h3>
+<div class="price">$46.67 <small>USD estimate</small></div>
+<p>Confirm sole height, width and the seller’s size guidance.</p>
+<a class="card-link" href="https://cafans.com/goods-158790.html">View CAFANS listing ↗</a>
+</div>
+</article>
+
+<article class="card" data-category="Shoes" data-price="66.50">
+<a class="photo" href="https://cafans.com/goods-158789.html" aria-label="View Heels on CAFANS">
+<img src="https://si.geilicdn.com/open1769158365-252808396-78c100000198a72ba27d0a23b4de_800_800.jpg" alt="Heels — CAFANS catalog image" width="480" height="480" loading="lazy" decoding="async">
+</a>
+<div class="card-body">
+<span class="category">Shoes</span><h3>Heels</h3>
+<div class="price">$66.50 <small>USD estimate</small></div>
+<p>Ask about heel height, fastening and the exact sizing system.</p>
+<a class="card-link" href="https://cafans.com/goods-158789.html">View CAFANS listing ↗</a>
+</div>
+</article>
+
+<article class="card" data-category="Hoodies &amp; Sweaters" data-price="27.50">
+<a class="photo" href="https://cafans.com/goods-158792.html" aria-label="View Sweatshirt on CAFANS">
+<img src="https://si.geilicdn.com/open1862809525-1234478995-56360000019a9d1b5cc60aa081c2_1200_1200.jpg" alt="Sweatshirt — CAFANS catalog image" width="480" height="480" loading="lazy" decoding="async">
+</a>
+<div class="card-body">
+<span class="category">Hoodies &amp; Sweaters</span><h3>Sweatshirt</h3>
+<div class="price">$27.50 <small>USD estimate</small></div>
+<p>Compare chest width, body length and stated fabric composition.</p>
+<a class="card-link" href="https://cafans.com/goods-158792.html">View CAFANS listing ↗</a>
+</div>
+</article>
+
+<article class="card" data-category="Hoodies &amp; Sweaters" data-price="27.50">
+<a class="photo" href="https://cafans.com/goods-158278.html" aria-label="View Corteiz Hoodie on CAFANS">
+<img src="https://si.geilicdn.com/open1806012509-1234478995-41540000019710a5546c0a22d249_1280_1280.jpg" alt="Corteiz Hoodie — CAFANS catalog image" width="480" height="480" loading="lazy" decoding="async">
+</a>
+<div class="card-body">
+<span class="category">Hoodies &amp; Sweaters</span><h3>Corteiz Hoodie</h3>
+<div class="price">$27.50 <small>USD estimate</small></div>
+<p>Record the exact color and size; request measurements if missing.</p>
+<a class="card-link" href="https://cafans.com/goods-158278.html">View CAFANS listing ↗</a>
+</div>
+</article>
+
+<article class="card" data-category="T-Shirts" data-price="32.64">
+<a class="photo" href="https://cafans.com/goods-158200.html" aria-label="View Unisex Embroidered Oversized T-Shirt on CAFANS">
+<img src="https://si.geilicdn.com/open1792148229-1234478995-4b8f00000196ff70111b0aa08290_1066_1066.jpg" alt="Unisex Embroidered Oversized T-Shirt — CAFANS catalog image" width="480" height="480" loading="lazy" decoding="async">
+</a>
+<div class="card-body">
+<span class="category">T-Shirts</span><h3>Unisex Embroidered Oversized T-Shirt</h3>
+<div class="price">$32.64 <small>USD estimate</small></div>
+<p>Compare shoulder and chest measurements for your preferred fit.</p>
+<a class="card-link" href="https://cafans.com/goods-158200.html">View CAFANS listing ↗</a>
+</div>
+</article>
+</div>
+<p id="empty" class="empty" hidden>No matching products. Try a shorter search or select all categories.</p>
+<p class="small">Source: <a href="https://cafans.com">CAFANS product catalog</a>. Prices reproduce the source’s estimated USD amounts and may change. Shipping, taxes and payment or agent fees are not included. Images are source catalog photos, not independently verified warehouse QC photos. Product names reproduce listing labels; brand names do not establish authenticity.</p>
+<noscript><p>All six product references are visible without JavaScript. Search, sorting and the budget calculator require JavaScript.</p></noscript>
+</section>
+
+<section id="how-to" aria-labelledby="guide-title">
+<div class="eyebrow">From discovery to a considered order</div>
+<h2 id="guide-title">How to use your SuperBuy spreadsheet shortlist</h2>
+<div class="guide-grid">
+<article class="guide">
+<span class="number">01</span>
+<h3>Save the exact option</h3>
+<p>A useful shortlist identifies a specific variation. Two prices may refer to different sizes, materials or quantities.</p>
+<ul>
+<li>Record the original marketplace URL and seller.</li>
+<li>Save color, size, quantity and the date checked.</li>
+<li>Separate seller claims from confirmed details.</li>
+</ul>
+</article>
+<article class="guide">
+<span class="number">02</span>
+<h3>Resolve sizing and QC questions</h3>
+<p>Compare measurements with an item you already own. Keep measurement methods and units consistent.</p>
+<ul>
+<li>Check the size chart for the selected item.</li>
+<li>Review warehouse photos for the ordered variation when available.</li>
+<li>Ask about unclear details and current return terms promptly.</li>
+</ul>
+</article>
+<article class="guide">
+<span class="number">03</span>
+<h3>Plan the complete parcel</h3>
+<p>Compare quotes for the same destination, package and service conditions. An item price cannot predict the final delivered cost.</p>
+<ul>
+<li>Get packed weight and dimensions.</li>
+<li>Confirm route restrictions and included services.</li>
+<li>Record freight, fees and destination charges separately.</li>
+</ul>
+</article>
+</div>
+</section>
+
+<section aria-labelledby="comparison-title">
+<h2 id="comparison-title">What to record before comparing finds</h2>
+<div class="table-scroll">
+<table>
+<thead><tr><th scope="col">Product group</th><th scope="col">Useful comparison fields</th><th scope="col">Question to resolve</th></tr></thead>
+<tbody>
+<tr><td>Shoes and slides</td><td>Selected size system, foot or insole measurements, width, stated material.</td><td>Does the measurement describe the foot or the shoe interior?</td></tr>
+<tr><td>Hoodies and sweatshirts</td><td>Chest width, body length, shoulder width, fabric and chosen variation.</td><td>Are measurements taken flat, and is the fabric composition stated?</td></tr>
+<tr><td>T-shirts</td><td>Chest, shoulders, length, fabric weight if supplied, embroidery or print details.</td><td>Does the size chart match this exact product option?</td></tr>
+<tr><td>Every listing</td><td>Source link, currency, quantity, checked date, current return terms and open questions.</td><td>Which costs or specifications remain unconfirmed?</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section id="budget" aria-labelledby="budget-title">
+<div class="budget">
+<div>
+<div class="eyebrow" style="color:#d9ef9a">Know your numbers</div>
+<h2 id="budget-title">Build a shopping budget</h2>
+<p>Enter your own amounts in USD. Add the item subtotal, shipping quote, service or payment fees, and any tax or duty estimate you have obtained.</p>
+<p class="small">This is an arithmetic planning tool. It does not calculate customs charges, currency conversion or live freight rates. Blank fields remain unknown, and the displayed amount is only the subtotal of entered values.</p>
+</div>
+<div>
+<div class="budget-fields">
+<label>Items subtotal (USD)<input class="cost" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Not entered"></label>
+<label>Shipping estimate (USD)<input class="cost" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Not entered"></label>
+<label>Fees estimate (USD)<input class="cost" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Not entered"></label>
+<label>Tax / duty estimate (USD)<input class="cost" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Not entered"></label>
+</div>
+<output class="total" id="total" aria-live="polite">—</output>
+<p id="budget-status" class="small">Enter amounts to calculate your planning subtotal.</p>
+</div>
+</div>
+</section>
+
+<section id="faq" aria-labelledby="faq-title">
+<div class="eyebrow">A little more clarity</div>
+<h2 id="faq-title">SuperBuy spreadsheet FAQ</h2>
+<details>
+<summary>Is this an official SuperBuy website?</summary>
+<p>No. This is an independent product-discovery and comparison guide. SuperBuy is referenced to describe the shopping workflow. The catalog references on this page come from CAFANS.</p>
+</details>
+<details>
+<summary>Where do the SuperBuy spreadsheet and Buy it now buttons go?</summary>
+<p>Both buttons open https://cafans.com. Individual product cards open the matching CAFANS product listing. You are leaving this guide to review information on that separate website.</p>
+</details>
+<details>
+<summary>Are the displayed prices live checkout prices?</summary>
+<p>No. They are estimated USD amounts copied from the CAFANS catalog snapshot checked on 19 November 2026. Verify the current price, selected variation and all additional charges before ordering.</p>
+</details>
+<details>
+<summary>Can every product reference be ordered through SuperBuy?</summary>
+<p>Compatibility has not been verified. Obtain the original marketplace URL, check it through your SuperBuy account, and confirm current purchasing restrictions and available options before funding an order.</p>
+</details>
+<details>
+<summary>Are product photographs the same as warehouse QC photos?</summary>
+<p>No. Catalog photos describe the source listing. Warehouse QC photos, when provided, should show the item received for your order. Check size, color, quantity and visible condition, and request specific detail photos when something is unclear. Photos alone do not establish authenticity or material composition.</p>
+</details>
+<details>
+<summary>What should I do if a listing changes or becomes unavailable?</summary>
+<p>Reopen the source and verify the exact option. Mark the old price or link as outdated in your shortlist. Compare alternatives using the same measurements and cost fields instead of assuming a similar photograph represents the same product.</p>
+</details>
+</section>
+
+<div class="end">
+<div class="eyebrow">Your next find starts with a better question</div>
+<h2>Browse. Compare. Check the details.</h2>
+<p>Continue to CAFANS for the broader catalog and current product information.</p>
+<div class="actions">
+<a class="btn" href="https://cafans.com">SuperBuy spreadsheet ↗</a>
+<a class="btn secondary" href="https://cafans.com">Buy it now ↗</a>
+</div>
+</div>
+</main>
+
+<footer>
+<div class="wrap">
+<strong>THE FIND INDEX · SuperBuy spreadsheet guide</strong>
+<p>Independent research resource. Product data and images are referenced from CAFANS. No affiliation with SuperBuy is claimed. Availability, product specifications, payment terms and shipping options must be checked with the relevant provider. This page does not process purchases.</p>
+<p>Catalog source checked: <time datetime="2026-11-19">19 November 2026</time> · <a href="https://cafans.com">Browse CAFANS</a></p>
+</div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+const search=document.getElementById("search");
+const category=document.getElementById("category");
+const sort=document.getElementById("sort");
+const container=document.getElementById("products");
+const cards=Array.from(container.querySelectorAll(".card"));
+cards.forEach((card,index)=>{card.dataset.index=String(index);});
+function updateCatalog(){
+ const query=search.value.trim().toLowerCase();
+ const selected=category.value;
+ const sorted=cards.slice().sort((a,b)=>{
+  if(sort.value==="low")return Number(a.dataset.price)-Number(b.dataset.price);
+  if(sort.value==="high")return Number(b.dataset.price)-Number(a.dataset.price);
+  if(sort.value==="name")return a.querySelector("h3").textContent.localeCompare(b.querySelector("h3").textContent);
+  return Number(a.dataset.index)-Number(b.dataset.index);
+ });
+ let visible=0;
+ sorted.forEach(card=>{
+  const matchesQuery=(card.querySelector("h3").textContent+" "+card.dataset.category).toLowerCase().includes(query);
+  const matchesCategory=selected==="all"||card.dataset.category===selected;
+  card.hidden=!(matchesQuery&&matchesCategory);
+  if(!card.hidden)visible++;
+  container.appendChild(card);
+ });
+ document.getElementById("result").textContent="Showing "+visible+" of "+cards.length+" product references.";
+ document.getElementById("empty").hidden=visible!==0;
+}
+search.addEventListener("input",updateCatalog);
+category.addEventListener("change",updateCatalog);
+sort.addEventListener("change",updateCatalog);
+
+const costs=Array.from(document.querySelectorAll(".cost"));
+function updateBudget(){
+ const entered=costs.filter(input=>input.value!=="");
+ const total=document.getElementById("total");
+ const status=document.getElementById("budget-status");
+ if(!entered.length){
+  total.textContent="—";
+  status.textContent="Enter amounts to calculate your planning subtotal.";
+  return;
+ }
+ if(entered.some(input=>!input.validity.valid||!Number.isFinite(input.valueAsNumber))){
+  total.textContent="—";
+  status.textContent="Enter valid non-negative amounts with up to two decimal places.";
+  return;
+ }
+ const sum=entered.reduce((amount,input)=>amount+Math.round(input.valueAsNumber*100),0)/100;
+ total.textContent=new Intl.NumberFormat("en-US",{style:"currency",currency:"USD"}).format(sum);
+ const missing=costs.length-entered.length;
+ status.textContent=missing
+  ?"Entered subtotal only · "+missing+" cost field"+(missing===1?" remains":"s remain")+" unknown."
+  :"Planning estimate from your four entries. Confirm all amounts before paying.";
+}
+costs.forEach(input=>input.addEventListener("input",updateBudget));
+})();
+</script>
+</body>
+</html>
